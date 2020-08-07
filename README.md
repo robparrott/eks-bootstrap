@@ -9,7 +9,15 @@ This repo is used by [Flux CD](https://fluxcd.io/) -- bootstrapped into by [eksc
 
 At some I'll figure out how to bootstrap from Flux to ArgoCD and then let them fight it out ... like putting a humidifier and dehunidifer into the same closed room.
 
+## Build
 
+To stand this up, you'll need to be able to create EKS clusters and related objects in AWS.
+
+The command to launch this is:
+
+```
+eksctl create cluster -f eksctl/cluster.yaml
+```
 ## Components
 
 - [ArgoCD](https://argoproj.github.io/argo-cd/) to enable bootstrapping into GitOps using ArgoCD
@@ -148,10 +156,3 @@ For a production-grade deployment, it's recommended to secure your endpoints wit
 Any sensitive service that needs to be exposed must have some form of authentication. To add authentication to Grafana for e.g., see [Grafana configuration](https://github.com/helm/charts/tree/master/stable/prometheus-operator#grafana).
 To add authentication to other components, please consult their documentation.
 
-## Get in touch
-
-[Create an issue](https://github.com/weaveworks/eks-quickstart-app-dev/issues/new), or
-login to [Weave Community Slack (#eksctl)][slackchan] ([signup][slackjoin]).
-
-[slackjoin]: https://slack.weave.works/
-[slackchan]: https://weave-community.slack.com/messages/eksctl/
