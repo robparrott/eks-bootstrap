@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: sandbox-cluster
+  name: sandbox
   region: us-east-2
   version: "1.17"
 
@@ -39,13 +39,13 @@ fargateProfiles:
 git:
   repo:
     url: "git@github.com:robparrott/eks-bootstrap.git"
-    branch: master
+    branch: sandbox/master
     fluxPath: "flux/"
     user: "gitops"
     email: "rparrott@gmail.com"
   operator:
     namespace: "flux"
     withHelm: true
-  bootstrapProfile:
-    source: app-dev
-    revision: master
+  # bootstrapProfile:
+  #   source: app-dev
+  #   revision: master
