@@ -6,13 +6,13 @@
 #     name: istio-operator
 #   name: istio-operator
 
-# ---
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   labels:
-#     name: istio-system
-#   name: istio-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    name: istio-system
+  name: istio-system
 
 
 
