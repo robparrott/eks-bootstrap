@@ -1,10 +1,18 @@
-# EKS Quickstart App Dev
+# EKS Bootstrap
 
 This repo contains an initial set of cluster components to be installed and
 configured by [eksctl](https://eksctl.io) through GitOps.
 
+Customized by REP to suit his own nefarious purposes.
+
+This repo is used by [Flux CD](https://fluxcd.io/) -- bootstrapped into by [eksctl](eksctl.io) -- to install a set of kubernetes objects. See the documentation for FluxCD for more info.
+
+At some I'll figure out how to bootstrap from Flux to ArgoCD and then let them fight it out ... like putting a humidifier and dehunidifer into the same closed room.
+
+
 ## Components
 
+- [ArgoCD](https://argoproj.github.io/argo-cd/) to enable bootstrapping into GitOps using ArgoCD
 - ALB ingress controller -- to easily expose services to the World.
 - [Cluster autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler) -- to [automatically add/remove nodes](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-autoscaler-setup/) to/from your cluster based on its usage.
 - [Prometheus](https://prometheus.io/) (its [Alertmanager](https://prometheus.io/docs/alerting/alertmanager/), its [operator](https://github.com/coreos/prometheus-operator), its [`node-exporter`](https://github.com/prometheus/node_exporter), [`kube-state-metrics`](https://github.com/kubernetes/kube-state-metrics), and [`metrics-server`](https://github.com/kubernetes-incubator/metrics-server)) -- for powerful metrics & alerts.
@@ -12,6 +20,7 @@ configured by [eksctl](https://eksctl.io) through GitOps.
 - [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) -- Kubernetes' standard dashboard.
 - [Fluentd](https://www.fluentd.org/) & Amazon's [CloudWatch agent](https://aws.amazon.com/cloudwatch/) -- for cluster & containers' [log collection, aggregation & analytics in CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-logs.html).
 - [podinfo](https://github.com/stefanprodan/podinfo) --  a toy demo application.
+
 
 ## Pre-requisites
 
