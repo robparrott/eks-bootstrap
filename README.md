@@ -9,7 +9,19 @@ This repo is used by [Flux CD](https://fluxcd.io/) -- bootstrapped into by [eksc
 
 At some I'll figure out how to bootstrap from Flux to ArgoCD and then let them fight it out ... like putting a humidifier and dehunidifer into the same closed room.
 
-## Build
+## Prerequisites
+
+You basically need this things setup or on your local machine to make this magic happen .... I won't go into details on this since there are lotsa documentation out there on how to do this. I will capture things here that I typically need to look up.
+
+1. An AWS account with suitable privileges
+1. The AWS command line tools
+1. Configured AWS CLI access
+1. Install [eksctl](https://eksctl.io)
+1. Install a kubernetes client (i.e. `kubectl`)
+
+Typically on Mac, [Home Brew](https://brew.sh/) is your friend here.
+
+## Deploy
 
 To stand this up, you'll need to be able to create EKS clusters and related objects in AWS.
 
@@ -18,6 +30,16 @@ The command to launch this is:
 ```
 eksctl create cluster -f eksctl/cluster.yaml
 ```
+
+It will take a while. Once up you can enable CLI access to the cluster via
+
+```
+aws eks --region [the region] update-kubeconfig --name [the cluster name] 
+```
+
+Assuming that works, you should be able to test this with `kubectl get nodes` and get a listing of worker nodes with hostnames that indicaites they are in EC2.
+
+
 ## Components
 
 - [ArgoCD](https://argoproj.github.io/argo-cd/) to enable bootstrapping into GitOps using ArgoCD
