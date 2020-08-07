@@ -4,27 +4,27 @@ kind: ClusterConfig
 metadata:
   name: sandbox-cluster
   region: us-east-2
-  version: "1.18"
+  version: "1.17"
 
 managedNodeGroups:
   - name: sandbox-managed-ng-1
     instanceType: t2.large
     minSize: 1
-      maxSize: 5
-      desiredCapacity: 1
-      volumeSize: 20
-      # ssh:
-      #   allow: true
-      #   publicKeyPath: ~/.ssh/ec2_id_rsa.pub
-      #   # new feature for restricting SSH access to certain AWS security group IDs
-      #   sourceSecurityGroupIds: ["sg-00241fbb12c607007"]
-      labels: {role: worker}
-      tags:
-        nodegroup-role: worker
-      iam:
-        withAddonPolicies:
-          externalDNS: true
-          certManager: true
+    maxSize: 5
+    desiredCapacity: 1
+    volumeSize: 20
+    # ssh:
+    #   allow: true
+    #   publicKeyPath: ~/.ssh/ec2_id_rsa.pub
+    #   # new feature for restricting SSH access to certain AWS security group IDs
+    #   sourceSecurityGroupIds: ["sg-00241fbb12c607007"]
+    labels: {role: worker}
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+        certManager: true
 
 fargateProfiles:
   - name: sandbox-fp-default
@@ -35,13 +35,14 @@ fargateProfiles:
         labels:
           env: sandbox
 
+# Bootstraps kubernetes via Flux CD
 git:
   repo:
-    url: "git@github.com:myorg/cluster-21.git"
+    url: "git@github.com:robparrott/eks-bootstrap.git"
     branch: master
     fluxPath: "flux/"
     user: "gitops"
-    email: "gitops@myorg.com"
+    email: "rparrott@gmail.com"
   operator:
     namespace: "flux"
     withHelm: true
