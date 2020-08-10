@@ -1,6 +1,6 @@
 Installs ArgoCD.
 
-install.yaml is sour5ced from the URL:
+install.yaml is sourced from the URL:
 
 * https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
