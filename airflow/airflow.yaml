@@ -20,7 +20,7 @@ spec:
       ##
       image:
         repository: apache/airflow
-        tag: 1.10.10-python3.6
+        #tag: 1.10.10-python3.6
         ## values: Always or IfNotPresent
         pullPolicy: IfNotPresent
         pullSecret: ""
